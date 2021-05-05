@@ -43,6 +43,7 @@ To run the examples
 
    .. code-block:: shell
 
+      terraform init
       terraform apply
 
 4. If ADOM ``demo_001`` already exists, you can use a different ADOM named
@@ -59,5 +60,9 @@ To run the examples
 
       rm -rf terraform*
       terraform apply -var="adom_id=3"
+
+.. note::
+    
+   ``adom_id`` should be in range [1-999].
 
 
