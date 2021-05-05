@@ -1,22 +1,9 @@
-locals {
-  firewall_addresses_csv_names = [for i in local.firewall_addresses_csv : i.name]
-}
-
-resource "fortios_fmg_jsonrpc_request" "example_005" {
-  json_content = <<JSON
-{
-  "method": "add",
-  "params": [
-    {
-      "data": [
-        {
-          "name": "${var.firewall_addrgrp_name}",
-          "member": ${jsonencode(local.firewall_addresses_csv_names)}
-        }
-      ],
-      "url": "/pm/config/adom/${var.adom_name}/obj/firewall/addrgrp"
-    }
-  ]
-}
-JSON
+resource "fortios_fmg_firewall_object_address" "example_005" {
+  count      = length(var.firewall_addresses)
+  adom       = local.adom_name
+  comment    = var.description
+  name       = format("%s%03d", var.firewall_address_name_prefix, count.index)
+  type       = "ipmask"
+  subnet     = var.firewall_addresses[count.index]
+  depends_on = [fortios_fmg_jsonrpc_request.example_004]
 }

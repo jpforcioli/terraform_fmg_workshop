@@ -1,16 +1,16 @@
-locals {
-  firewall_addresses_csv = csvdecode(file("${path.module}/firewall_addresses.csv"))
+resource "fortios_fmg_jsonrpc_request" "example_004" {
+  json_content = <<JSON
+{
+  "method": "set",
+  "params": [
+    {
+      "data": { 
+          "color": 24
+      },
+      "url": "/pm/config/adom/${local.adom_name}/obj/firewall/address/srv_999"
+    }
+  ]
 }
-
-resource "fortios_fmg_firewall_object_address" "example_004" {
-  count   = length(local.firewall_addresses_csv)
-  adom    = var.adom_name
-  comment = var.description
-  name    = local.firewall_addresses_csv[count.index].name
-  type    = "ipmask"
-  subnet = format(
-    "%s %s",
-    local.firewall_addresses_csv[count.index].ip,
-    local.firewall_addresses_csv[count.index].netmask
-  )
+JSON
+  depends_on   = [fortios_fmg_firewall_object_address.example_003]
 }

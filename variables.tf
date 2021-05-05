@@ -1,6 +1,20 @@
-variable "adom_name" {
+variable "adom_id" {
+  type    = number
+  default = 1
+}
+
+variable "adom_name_prefix" {
   type    = string
-  default = "demo_001"
+  default = "demo_"
+}
+
+variable "device" {
+  type = object({ name_prefix = string, sn_prefix = string, platform_str = string })
+  default = {
+    name_prefix  = "device"
+    sn_prefix    = "FGT60E"
+    platform_str = "FortiGate-60E"
+  }
 }
 
 variable "description" {
@@ -33,7 +47,10 @@ variable "ppkg_name" {
   default = "ppkg_branches"
 }
 
-variable "policy_section_name" {
-  type    = string
-  default = "Terraform Example"
+variable "policy_section_title" {
+  type = object({ global_label = string, label = string })
+  default = {
+    global_label = "Terraform Example",
+    label        = "Terraform Example"
+  }
 }

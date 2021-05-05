@@ -6,7 +6,6 @@ terraform {
     }
   }
 }
-
 provider "fortios" {
   fmg_hostname = "10.210.35.200"
   fmg_username = "devops"

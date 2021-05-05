@@ -1,8 +1,8 @@
 resource "fortios_fmg_firewall_object_address" "example_003" {
-  count   = length(var.firewall_addresses)
-  adom    = var.adom_name
-  comment = var.description
-  name    = format("%s%03d", var.firewall_address_name_prefix, count.index)
-  type    = "ipmask"
-  subnet  = var.firewall_addresses[count.index]
+  name       = "srv_999"
+  type       = "ipmask"
+  comment    = var.description
+  subnet     = "10.99.9.1 255.255.255.255"
+  adom       = local.adom_name
+  depends_on = [fortios_fmg_jsonrpc_request.example_002]
 }
