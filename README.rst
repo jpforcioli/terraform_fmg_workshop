@@ -1,5 +1,5 @@
 Introduction
-------------
+============
 
 The set of ``.tf`` files will:
 
@@ -27,26 +27,35 @@ The set of ``.tf`` files will:
 
 10. Install the policy package against the model device
 
-To run the examples
--------------------
+Instructions
+============
 
-1. Delete all ``terraform*`` files
+1. Install terraform according to the instruction given `here
+   <https://www.terraform.io/downloads.html>`_ 
+
+2. Clone this the git ``terraform_fmg_workshop``
 
    .. code-block:: shell
 
-      rm -rf terraform*
+      git clone https://github.com/jpforcioli/terraform_fmg_workshop.git
+      cd terraform_fmg_workshop
 
-2. Make sure your FortiManager isn't having any existing ADOM named
-   ``demo_001``. If it does exist go to step 4 directly.
-
-3. Run terraform
+3. Load the terraform required providers
 
    .. code-block:: shell
 
       terraform init
+
+4. Make sure your FortiManager isn't having any existing ADOM named
+      ``demo_001``. If it does exist go to step 6 directly.
+   
+5. Run the terraform files
+
+   .. code-block:: shell
+
       terraform apply
 
-4. If ADOM ``demo_001`` already exists, you can use a different ADOM named
+6. If ADOM ``demo_001`` already exists, you can use a different ADOM name
 
    .. code-block:: shell
  
@@ -54,7 +63,7 @@ To run the examples
 
    ADOM ``demo_002`` will be created.
 
-5. Should you want to retry but using a different ADOM name
+8. Should you want to retry but using a different ADOM name
 
    .. code-block:: shell
 
@@ -64,5 +73,3 @@ To run the examples
 .. note::
     
    ``adom_id`` should be in range [1-999].
-
-
