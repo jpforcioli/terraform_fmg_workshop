@@ -49,7 +49,7 @@ Instructions
 4. Make sure your FortiManager isn't having any existing ADOM named
       ``demo_001``. If it does exist go to step 6 directly.
    
-5. Run the terraform files
+5. Run the example files
 
    .. code-block:: shell
 
