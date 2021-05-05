@@ -1,7 +1,7 @@
 Introduction
 ============
 
-The set of ``.tf`` files will:
+This set of ``.tf`` files will:
 
 1. Create an ADOM 
 
