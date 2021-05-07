@@ -5,7 +5,7 @@ locals {
 resource "fortios_fmg_jsonrpc_request" "example_007" {
   json_content = <<JSON
 {
-  "method": "add",
+  "method": "set",
   "params": [
     {
       "data": [
